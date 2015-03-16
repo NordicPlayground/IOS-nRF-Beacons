@@ -20,4 +20,3 @@ It is ultra-compact at 20 mm in diameter and can be run using CR1632 coin-cell b
 - Location Services must be enabled in addition to Bluetooh. In order to enable Location Services go to Settings -> Privacy -> Location Services.
 - Compatible with nRF51822 Bluetooth® Smart Beacon Kit.
 - You may find more information about nRF51822 Bluetooth® Smart Beacon Kit on our website: http://www.nordicsemi.com/eng/Products/Bluetooth-R-low-energy/nRF51822-Bluetooth-Smart-Beacon-Kit.
-- Various phones have different antennas, yet may get other signal strength readings from the beacons.
