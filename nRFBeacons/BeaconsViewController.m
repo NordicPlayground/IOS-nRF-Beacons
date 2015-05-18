@@ -436,7 +436,7 @@
                         [self.beaconsTableView reloadData];
                         if ([[self.beacons[j] event] isEqualToString:EventImmidiate]) {
                             NSLog(@"Close Event matched");
-                            [self performAction:[self.beacons[j] action]];
+                            [self performAction:[(Beacons *)self.beacons[j] action]];
                         }
                     }
                     else if ([beacons[i] proximity] == CLProximityNear) {
@@ -445,7 +445,7 @@
                         [self.beaconsTableView reloadData];
                         if ([[self.beacons[j] event] isEqualToString:EventNear]) {
                             NSLog(@"Near Event matched");
-                            [self performAction:[self.beacons[j] action]];
+                            [self performAction:[(Beacons *)self.beacons[j] action]];
                         }
                     }
                     else if ([beacons[i] proximity] == CLProximityFar) {
