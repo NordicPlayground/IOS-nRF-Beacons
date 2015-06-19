@@ -40,6 +40,14 @@ BOOL isViewLoaded;
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
+    NSLog(@"PopoverViewController.h viewWillAppear");
+    NSLog(@"parentviewcontroller %@",self.parentViewController);
+    NSLog(@"presentingviewcontroller %@",[self presentingViewController]);
+    NSLog(@"presentedviewcontroller %@",[self presentedViewController]);
+    NSLog(@"presentationviewcontroller %@",[self presentationController]);
+
+
+
     if (isViewLoaded) {
         isViewLoaded = NO;
     }

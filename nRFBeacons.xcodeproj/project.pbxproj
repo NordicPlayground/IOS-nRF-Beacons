@@ -21,7 +21,7 @@
 		7E801D4918C5F3BE0089D199 /* Beacons.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E801D4818C5F3BE0089D199 /* Beacons.m */; };
 		7E801D4C18C7C17F0089D199 /* BeaconData.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E801D4B18C7C17F0089D199 /* BeaconData.m */; };
 		7E801D4F18C886840089D199 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E801D4E18C886840089D199 /* Utility.m */; };
-		7E917C3518D1EA960045C000 /* UpdateBeaconViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E917C3418D1EA960045C000 /* UpdateBeaconViewController.m */; };
+		7E917C3518D1EA960045C000 /* UpdateScanTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E917C3418D1EA960045C000 /* UpdateScanTableViewController.m */; };
 		7E917C3718D300580045C000 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E917C3618D300580045C000 /* CoreBluetooth.framework */; };
 		7E917C3C18DC7C860045C000 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E917C3B18DC7C860045C000 /* Reachability.m */; };
 		7E917C4218E04F7D0045C000 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E917C4118E04F7D0045C000 /* AVFoundation.framework */; };
@@ -89,7 +89,7 @@
 		7E801D4D18C886840089D199 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		7E801D4E18C886840089D199 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 		7E917C3318D1EA960045C000 /* UpdateScanTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateScanTableViewController.h; sourceTree = "<group>"; };
-		7E917C3418D1EA960045C000 /* UpdateBeaconViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateBeaconViewController.m; sourceTree = "<group>"; };
+		7E917C3418D1EA960045C000 /* UpdateScanTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateScanTableViewController.m; sourceTree = "<group>"; };
 		7E917C3618D300580045C000 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		7E917C3A18DC7C7E0045C000 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		7E917C3B18DC7C860045C000 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -164,7 +164,6 @@
 				7E801D3E18C5CE380089D199 /* BeaconsDatabase.m */,
 				7E801D4718C5F3BE0089D199 /* Beacons.h */,
 				7E801D4818C5F3BE0089D199 /* Beacons.m */,
-				7E991F3218C4767C00DC2A0E /* nRFBeacons.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -173,7 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				7E917C3318D1EA960045C000 /* UpdateScanTableViewController.h */,
-				7E917C3418D1EA960045C000 /* UpdateBeaconViewController.m */,
+				7E917C3418D1EA960045C000 /* UpdateScanTableViewController.m */,
 				A86B66A31A8419F2002AB0D1 /* UpdateBeaconViewController.h */,
 				A86B66A41A8419F2002AB0D1 /* UpdateBeaconViewController.m */,
 				A86B66A61A8B775F002AB0D1 /* UUIDPopoverTableViewController.h */,
@@ -230,19 +229,21 @@
 		7E991F2618C4767C00DC2A0E /* nRFBeacons */ = {
 			isa = PBXGroup;
 			children = (
+				A8A6C7151B345DE9006A42AC /* About */,
+				A8A6C7141B345D94006A42AC /* MonaLisa */,
+				A8A6C7131B345D3E006A42AC /* BeaconsMonitoring */,
+				A8A6C7121B345CD3006A42AC /* BeaconConfiguration */,
+				A8A6C7111B345B91006A42AC /* AddBeacon */,
+				A8A6C7101B345B34006A42AC /* Utilities */,
 				A8B8B68919CB0EC500D8C70D /* Storyboard */,
+				7E917C3918DC7C650045C000 /* NetworkReachability */,
 				7E917C2F18D1DC9F0045C000 /* UpdateService */,
 				7E801D4318C5DD810089D199 /* CoreData */,
-				A83F10551B3433CC0076922E /* BeaconsMonitoring */,
-				A83F10541B3433A80076922E /* MonaLisa */,
-				A83F10521B34332F0076922E /* BeaconConfiguration */,
-				A83F10501B3432510076922E /* AddBeacon */,
 				7E991F2F18C4767C00DC2A0E /* AppDelegate.h */,
 				7E991F3018C4767C00DC2A0E /* AppDelegate.m */,
+				7E801D4A18C7C17F0089D199 /* BeaconData.h */,
+				7E801D4B18C7C17F0089D199 /* BeaconData.m */,
 				7E991F3518C4767C00DC2A0E /* Images.xcassets */,
-				A83F10511B3432FF0076922E /* About */,
-				A83F10531B34337E0076922E /* Utilities */,
-				7E917C3918DC7C650045C000 /* NetworkReachability */,
 				7E991F2718C4767C00DC2A0E /* Supporting Files */,
 			);
 			path = nRFBeacons;
@@ -251,6 +252,7 @@
 		7E991F2718C4767C00DC2A0E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7E991F3218C4767C00DC2A0E /* nRFBeacons.xcdatamodeld */,
 				7E991F2818C4767C00DC2A0E /* nRFBeacons-Info.plist */,
 				7E991F2918C4767C00DC2A0E /* InfoPlist.strings */,
 				7E991F2C18C4767C00DC2A0E /* main.m */,
@@ -278,7 +280,16 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A83F10501B3432510076922E /* AddBeacon */ = {
+		A8A6C7101B345B34006A42AC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				7E801D4D18C886840089D199 /* Utility.h */,
+				7E801D4E18C886840089D199 /* Utility.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A8A6C7111B345B91006A42AC /* AddBeacon */ = {
 			isa = PBXGroup;
 			children = (
 				A86B66A01A8114D7002AB0D1 /* AddNordicBeaconViewController.h */,
@@ -289,16 +300,7 @@
 			path = AddBeacon;
 			sourceTree = "<group>";
 		};
-		A83F10511B3432FF0076922E /* About */ = {
-			isa = PBXGroup;
-			children = (
-				7E9394B518E95E22000A5B6B /* AboutViewController.h */,
-				7E9394B618E95E22000A5B6B /* AboutViewController.m */,
-			);
-			path = About;
-			sourceTree = "<group>";
-		};
-		A83F10521B34332F0076922E /* BeaconConfiguration */ = {
+		A8A6C7121B345CD3006A42AC /* BeaconConfiguration */ = {
 			isa = PBXGroup;
 			children = (
 				7E801D2B18C4948F0089D199 /* ConfigTableViewController.h */,
@@ -317,27 +319,7 @@
 			path = BeaconConfiguration;
 			sourceTree = "<group>";
 		};
-		A83F10531B34337E0076922E /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				7E801D4D18C886840089D199 /* Utility.h */,
-				7E801D4E18C886840089D199 /* Utility.m */,
-				7E801D4A18C7C17F0089D199 /* BeaconData.h */,
-				7E801D4B18C7C17F0089D199 /* BeaconData.m */,
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
-		A83F10541B3433A80076922E /* MonaLisa */ = {
-			isa = PBXGroup;
-			children = (
-				7E44C11E18CDCDCE009E7781 /* MonalisaViewController.h */,
-				7E44C11F18CDCDCE009E7781 /* MonalisaViewController.m */,
-			);
-			path = MonaLisa;
-			sourceTree = "<group>";
-		};
-		A83F10551B3433CC0076922E /* BeaconsMonitoring */ = {
+		A8A6C7131B345D3E006A42AC /* BeaconsMonitoring */ = {
 			isa = PBXGroup;
 			children = (
 				7E801D2518C48AD30089D199 /* BeaconTableViewCell.h */,
@@ -346,6 +328,24 @@
 				7E801D2918C48B050089D199 /* BeaconsViewController.m */,
 			);
 			path = BeaconsMonitoring;
+			sourceTree = "<group>";
+		};
+		A8A6C7141B345D94006A42AC /* MonaLisa */ = {
+			isa = PBXGroup;
+			children = (
+				7E44C11E18CDCDCE009E7781 /* MonalisaViewController.h */,
+				7E44C11F18CDCDCE009E7781 /* MonalisaViewController.m */,
+			);
+			path = MonaLisa;
+			sourceTree = "<group>";
+		};
+		A8A6C7151B345DE9006A42AC /* About */ = {
+			isa = PBXGroup;
+			children = (
+				7E9394B518E95E22000A5B6B /* AboutViewController.h */,
+				7E9394B618E95E22000A5B6B /* AboutViewController.m */,
+			);
+			path = About;
 			sourceTree = "<group>";
 		};
 		A8B8B68919CB0EC500D8C70D /* Storyboard */ = {
@@ -474,7 +474,7 @@
 				7E801D4F18C886840089D199 /* Utility.m in Sources */,
 				A86B66A81A8B775F002AB0D1 /* UUIDPopoverTableViewController.m in Sources */,
 				7E801D2D18C4948F0089D199 /* ConfigTableViewController.m in Sources */,
-				7E917C3518D1EA960045C000 /* UpdateBeaconViewController.m in Sources */,
+				7E917C3518D1EA960045C000 /* UpdateScanTableViewController.m in Sources */,
 				A86B669F1A7A69E5002AB0D1 /* PopoverViewController.m in Sources */,
 				7E801D3018C4B5DC0089D199 /* UUIDTableViewController.m in Sources */,
 				7E917C3C18DC7C860045C000 /* Reachability.m in Sources */,
@@ -713,8 +713,7 @@
 				7E991F3318C4767C00DC2A0E /* nRFBeacons.xcdatamodel */,
 			);
 			currentVersion = 7E991F3318C4767C00DC2A0E /* nRFBeacons.xcdatamodel */;
-			name = nRFBeacons.xcdatamodeld;
-			path = nRFBeacons/nRFBeacons.xcdatamodeld;
+			path = nRFBeacons.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
