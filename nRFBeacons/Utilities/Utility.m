@@ -114,4 +114,14 @@ NSString* const EventEnter = @"In Range";
     return eventImages;
 }
 
++ (BOOL)isApplicationStateInactiveORBackground {
+    UIApplicationState applicationState = [[UIApplication sharedApplication] applicationState];
+    if (applicationState == UIApplicationStateInactive || applicationState == UIApplicationStateBackground) {
+        return YES;
+    }
+    else {
+        return NO;
+    }
+}
+
 @end

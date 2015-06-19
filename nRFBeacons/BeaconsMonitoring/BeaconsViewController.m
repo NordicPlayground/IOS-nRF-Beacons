@@ -32,7 +32,7 @@
 
 @interface BeaconsViewController ()
 {
-    BOOL isAppInBackground, isActionPerformed, shouldStopAction;
+    BOOL isActionPerformed, shouldStopAction;
 }
 @property (nonatomic, strong)NSArray *beacons;
 @property (strong, nonatomic) BeaconsDatabase *database;
@@ -70,7 +70,6 @@
     }
     self.locationManager.pausesLocationUpdatesAutomatically = NO;
     locationManager.delegate = self;
-    isAppInBackground = NO;
     [self initSound];
     
     self.regions = [[NSMutableArray alloc]initWithCapacity:[[Utility getBeaconsUUIDS] count]];
@@ -90,8 +89,10 @@
     shouldStopAction = NO;
     [self reloadBeacons];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidEnterBackground:) name:UIApplicationDidEnterBackgroundNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActiveBackground:) name:UIApplicationDidBecomeActiveNotification object:nil];
+    //Following if condition display user permission alert for background notification
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound categories:nil]];
+    }
 }
 
 -(void)viewDidDisappear:(BOOL)animated
@@ -177,25 +178,6 @@
         }
     }
 
-}
-
--(void)appDidEnterBackground:(NSNotification *)_notification
-{
-    isAppInBackground = YES;
-    NSLog(@"App is in background");
-}
-
--(void)appDidBecomeActiveBackground:(NSNotification *)_notification
-{
-    isAppInBackground = NO;
-    NSLog(@"App is in foreground");
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void) initSound
@@ -476,26 +458,17 @@
     if(!isActionPerformed) {
         if([action isEqualToString:@"Show Mona Lisa"]) {
             NSLog(@"showMonalisa");
-            if (isAppInBackground) {
-                [self showBackgroundAlert:@"Mona Lisa"];
-            }
             [self showMonalisa];
             isActionPerformed = YES;
         }
         else if([action isEqualToString:@"Open Website"]) {
             NSLog(@"Open Website");
             [self openWebsite];
-            if (isAppInBackground) {
-                [self showBackgroundAlert:@"Nordic Semiconductor"];
-            }
             isActionPerformed = YES;
         }
         else if([action isEqualToString:@"Play Alarm"]) {
             NSLog(@"Playing Alarm");
             [self playAlarm];
-            if (isAppInBackground) {
-                [self showBackgroundAlert:@"Playing Alarm"];
-            }
             isActionPerformed = YES;
         }
     }
@@ -516,15 +489,15 @@
             if ([[self.beacons[index] event] isEqualToString:event]) {
                 if ([[self.beacons[index] action] isEqualToString:@"Show Mona Lisa"]) {
                     NSLog(@"showMonalisa");
-                    if (isAppInBackground) {
+                    if ([Utility isApplicationStateInactiveORBackground]) {
                         [self showBackgroundAlert:@"Mona Lisa"];
-                    }
+                    }                    
                     [self showMonalisa];
                     return;
                 }
                 else if ([[self.beacons[index] action] isEqualToString:@"Open Website"]) {
                     NSLog(@"Open Website");
-                    if (isAppInBackground) {
+                    if ([Utility isApplicationStateInactiveORBackground]) {
                         [self showBackgroundAlert:@"Nordic Semiconductor ASA"];
                     }
                     [self openWebsite];
@@ -532,7 +505,7 @@
                 }
                 else if ([[self.beacons[index] action] isEqualToString:@"Play Alarm"]) {
                     NSLog(@"Playing Alarm");
-                    if (isAppInBackground) {
+                    if ([Utility isApplicationStateInactiveORBackground]) {
                         [self showBackgroundAlert:@"Playing Alarm"];
                     }
                     [self playAlarm];

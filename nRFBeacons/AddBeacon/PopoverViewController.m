@@ -20,54 +20,54 @@
  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
+#import "PopoverViewController.h"
+#import "ConfigTableViewController.h"
 
-@interface Utility : NSObject
-#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
-#define ROW_HEIGHT_FOR_CONNECT_BUTTON 160;
+@interface PopoverViewController ()
 
-+ (NSArray *)getBeaconsEvents;
-+ (NSArray *)getBeaconsActions;
-+ (NSArray *)getBeaconsUUIDS;
-+ (NSArray *)getBeaconsEventsImages;
-+ (NSArray *)getBeaconsActionsImages;
-+ (CLBeaconRegion *) getRegionAtIndex:(int)regionIndex;
+@end
 
-extern NSString* const EventImmidiate;
-extern NSString* const EventNear;
-extern NSString* const EventExit;
-extern NSString* const EventEnter;
+@implementation PopoverViewController
+
+BOOL isViewLoaded;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    isViewLoaded = YES;
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    if (isViewLoaded) {
+        isViewLoaded = NO;
+    }
+    else {
+        [self.popOverDelegate popOverWillDismiss];
+        [self dismissViewControllerAnimated:NO completion:nil];
+    }
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 
-typedef enum {
-    DUPLICATE_IN_UPDATE,
-    UPDATED_SUCCESSFULLY,
-    ERROR_IN_UPDATE,
-    BEACON_NOT_FOUND_IN_UPDATE,
-    
-}BeaconUpdateStatus;
+#pragma mark - Navigation
 
-typedef enum {
-    DUPLICATE_IN_ADD,
-    ADDED_SUCCESSFULLY,
-    ERROR_IN_ADD,
-    
-}BeaconAddStatus;
-
-typedef enum {
-    DELETED_SUCCESSFULLY,
-    ERROR_IN_DELETE,
-    
-}BeaconDeleteStatus;
-
-typedef enum {
-    At_Beacon,
-    NEAR,
-    FAR,
-    UNKNOWN,
-    NO_BEACON_FOUND,
-}BeaconRangeStatus;
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"Add"]) {
+        NSLog(@"Add Other Beacon Segue");
+        UINavigationController *navController = segue.destinationViewController;
+        ConfigTableViewController *configVC = (ConfigTableViewController *)navController.topViewController;
+        configVC.isAddView = YES;
+    }
+}
 
 
 @end
